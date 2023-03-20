@@ -314,7 +314,7 @@
                             //ADDED BY DINA
                             const oView = this.getView();
                             this.btnContainer = oView.byId("btnContainer");
-                            this.someInput = oView.byId("btnContainer");
+                            this.someInput = oView.byId("someInput");
                             //
                             this._oModel = new JSONModel({
                                 status: this._ui_settings.status
