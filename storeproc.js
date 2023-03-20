@@ -280,7 +280,7 @@
             });
             console.log(Ar);
 
-            createBtns: function(aBtnConfig) {
+            function createBtns (aBtnConfig) {
                         // aBtnConfig = JSON.parse(sBtnConfig);
                         this.btnContainer.removeAllItems();
                         aBtnConfig.forEach( oBtnConfig => {
