@@ -28,6 +28,8 @@
     <VBox>
         <Input id="someInput" class="sapuiTinyMargin"/>
         <HBox id="btnContainer">
+                <Button press="onLoadPress" text="Populate Data"/>
+                <Button press="onDeletePress" text="Delete Data"/>
         </HBox >
     </VBox>
     `;
@@ -231,17 +233,6 @@
     }
     customElements.define("com-fd-djaja-sap-sac-storeproc", StoreProc);
 
-    function createBtns (aBtnConfig) {
-                            // aBtnConfig = JSON.parse(sBtnConfig);
-                            this.btnContainer.removeAllItems();
-                            aBtnConfig.forEach( oBtnConfig => {
-                                const oBtn = new sap.m.Button({
-                                    text: oBtnConfig.text,
-                                    press: this.onBtnPress
-                                });
-                                oBtn.data("command", oBtnConfig.command);
-                                this.btnContainer.additem(oBtn);
-                            }); };
 
     //function to create an UI5 dialog box based on sap.m.Button 
     function UI5(changedProperties, that, mode) {
@@ -272,10 +263,8 @@
             //         </script>
             // ;
 
-            // div0.innerHTML = '<?xml version="1.0"?><script id="oView_' + widgetName + '" name="oView_' + widgetName + '" type="sapui5/xmlview"><mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" height="100%" controllerName="myView.Template"><Button id="buttonPopulate" type="Accept" text="' + that._export_settings.text + '" enabled="{' + widgetName + '>/status}" press="onPress" ariaDescribedBy="acceptButtonDescription genericButtonDescription"><Button id="buttonDelete" type="Accept" text="' + that._export_settings.text + '" enabled="{' + widgetName + '>/status}" press="onPress" ariaDescribedBy="acceptButtonDescription genericButtonDescription"><layoutData><FlexItemData growFactor="1" /></layoutData></Button></mvc:View></script>'    
-            // ;
+            div0.innerHTML = '<?xml version="1.0"?><script id="oView_' + widgetName + '" name="oView_' + widgetName + '" type="sapui5/xmlview"><mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" height="100%" controllerName="myView.Template"><layoutData><FlexItemData growFactor="1" /></layoutData></mvc:View></script>' ;
 
-            div0.innerHTML = createBtns(jsonBtnsConfig);
             _shadowRoot.appendChild(div0);
 
             let div1 = document.createElement('div');
@@ -351,19 +340,24 @@
                         }
                         
                     },
-                    //ADDED BY DINA
-                    createBtns: function(aBtnConfig) {
-                        // aBtnConfig = JSON.parse(sBtnConfig);
-                        this.btnContainer.removeAllItems();
-                        aBtnConfig.forEach( oBtnConfig => {
-                            const oBtn = new sap.m.Button({
-                                text: oBtnConfig.text,
-                                press: this.onBtnPress
-                            });
-                            oBtn.data("command", oBtnConfig.command);
-                            this.btnContainer.additem(oBtn);
-                        }); },
-                    //
+                    onLoadPress: function(oEvent) {
+                         const sValue = this.someInput.getValue();
+                         ssocket.emit("cmd_req", {
+                            message: that.widgetName,
+                            socketid: socketid,
+                            value: sValue
+                        });
+                        MessageToast.show("Running Store Procedure");
+                    },
+                    onDeletePress: function(oEvent) {
+                         const sValue = this.someInput.getValue();
+                         ssocket.emit("cmd_req_del", {
+                            message: that.widgetName,
+                            socketid: socketid,
+                            value: sValue
+                        });
+                        MessageToast.show("Running Store Procedure");
+                    },
                     onPress: function(oEvent) {
                         var oModel = sap.ui.getCore().getModel(that.widgetName);
                         oModel.setProperty("/status", false);
