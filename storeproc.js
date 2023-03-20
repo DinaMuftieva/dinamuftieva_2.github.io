@@ -387,25 +387,25 @@
 
             oView.placeAt(div);
 
-            if (that_._designMode) {
-                oView.byId("buttonPopulate").setEnabled(false);
-            } else {
-                if(mode === "") {
-                    oView.byId("buttonPopulate").setEnabled(false);
-                } else {
-                    oView.byId("buttonPopulate").setEnabled(true);
-                }
-            };
+            // if (that_._designMode) {
+            //     oView.byId("buttonPopulate").setEnabled(false);
+            // } else {
+            //     if(mode === "") {
+            //         oView.byId("buttonPopulate").setEnabled(false);
+            //     } else {
+            //         oView.byId("buttonPopulate").setEnabled(true);
+            //     }
+            // };
 
-            if (that_._designMode) {
-                oView.byId("buttonDelete").setEnabled(false);
-            } else {
-                if(mode === "") {
-                    oView.byId("buttonDelete").setEnabled(false);
-                } else {
-                    oView.byId("buttonDelete").setEnabled(true);
-                }
-            }
+            // if (that_._designMode) {
+            //     oView.byId("buttonDelete").setEnabled(false);
+            // } else {
+            //     if(mode === "") {
+            //         oView.byId("buttonDelete").setEnabled(false);
+            //     } else {
+            //         oView.byId("buttonDelete").setEnabled(true);
+            //     }
+            // }
 
         });
     }
