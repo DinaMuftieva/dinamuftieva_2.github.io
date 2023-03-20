@@ -275,7 +275,7 @@
             // div0.innerHTML = '<?xml version="1.0"?><script id="oView_' + widgetName + '" name="oView_' + widgetName + '" type="sapui5/xmlview"><mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" height="100%" controllerName="myView.Template"><Button id="buttonPopulate" type="Accept" text="' + that._export_settings.text + '" enabled="{' + widgetName + '>/status}" press="onPress" ariaDescribedBy="acceptButtonDescription genericButtonDescription"><Button id="buttonDelete" type="Accept" text="' + that._export_settings.text + '" enabled="{' + widgetName + '>/status}" press="onPress" ariaDescribedBy="acceptButtonDescription genericButtonDescription"><layoutData><FlexItemData growFactor="1" /></layoutData></Button></mvc:View></script>'    
             // ;
 
-            div0.innerHTML = this.createBtns(jsonBtnsConfig);
+            div0.innerHTML = createBtns(jsonBtnsConfig);
             _shadowRoot.appendChild(div0);
 
             let div1 = document.createElement('div');
