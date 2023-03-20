@@ -231,6 +231,18 @@
     }
     customElements.define("com-fd-djaja-sap-sac-storeproc", StoreProc);
 
+    function createBtns (aBtnConfig) {
+                            // aBtnConfig = JSON.parse(sBtnConfig);
+                            this.btnContainer.removeAllItems();
+                            aBtnConfig.forEach( oBtnConfig => {
+                                const oBtn = new sap.m.Button({
+                                    text: oBtnConfig.text,
+                                    press: this.onBtnPress
+                                });
+                                oBtn.data("command", oBtnConfig.command);
+                                this.btnContainer.additem(oBtn);
+                            }); };
+
     //function to create an UI5 dialog box based on sap.m.Button 
     function UI5(changedProperties, that, mode) {
         var that_ = that;
@@ -279,18 +291,6 @@
                 'div': mapcanvas_divstr
             });
             console.log(Ar);
-
-            function createBtns (aBtnConfig) {
-                        // aBtnConfig = JSON.parse(sBtnConfig);
-                        this.btnContainer.removeAllItems();
-                        aBtnConfig.forEach( oBtnConfig => {
-                            const oBtn = new sap.m.Button({
-                                text: oBtnConfig.text,
-                                press: this.onBtnPress
-                            });
-                            oBtn.data("command", oBtnConfig.command);
-                            this.btnContainer.additem(oBtn);
-                        }); };
 
         }
 
