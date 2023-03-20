@@ -309,7 +309,7 @@
 
                             this._ui_settings = {};
                             this._ui_settings.status = true;
-                            //
+                            //ADDED BY DINA
                             const oView = this.getView();
                             this.btnContainer = oView.byId("btnContainer");
                             this.someInput = oView.byId("btnContainer");
@@ -338,6 +338,7 @@
                         }
                         
                     },
+                    //ADDED BY DINA
                     createBtns: function(aBtnConfig) {
                         // aBtnConfig = JSON.parse(sBtnConfig);
                         this.btnContainer.removeAllItems();
@@ -349,18 +350,19 @@
                             oBtn.data("command", oBtnConfig.command);
                             this.btnContainer.additem(oBtn);
                         }); },
-
+                    //
                     onPress: function(oEvent) {
                         var oModel = sap.ui.getCore().getModel(that.widgetName);
                         oModel.setProperty("/status", false);
-                        //
+                        //ADDED BY DINA
                         const oBtn = oEvent.getSource();
                         const sCommand = oBtn.data("command");
                         const sValue = this.someInput.getValue();
                         //
-                        ssocket.emit(sCommand, sValue {
+                        ssocket.emit(sCommand {
                             message: that.widgetName,
-                            socketid: socketid
+                            socketid: socketid,
+                            value: sValue
                         });
                         MessageToast.show("Running Store Procedure");
                     }
