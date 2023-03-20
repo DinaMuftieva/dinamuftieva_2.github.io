@@ -246,19 +246,19 @@
 
             let div0 = document.createElement('div');
             //div0.innerHTML = '<?xml version="1.0"?><script id="oView_' + widgetName + '" name="oView_' + widgetName + '" type="sapui5/xmlview"><mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" height="100%" controllerName="myView.Template"><Button id="buttonId" type="Accept" text="' + that._export_settings.text + '" enabled="{' + widgetName + '>/status}" press="onPress" ariaDescribedBy="acceptButtonDescription genericButtonDescription"><layoutData><FlexItemData growFactor="1" /></layoutData></Button></mvc:View></script>';
-            // div0.innerHTML = 
-            //     <?xml version="1.0"?>
-            //         <script id="oView_' + widgetName + '" name="oView_' + widgetName + '" type="sapui5/xmlview">
-            //             <mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" height="100%" controllerName="myView.Template">
-            //                 <Button id="buttonPopulate" type="Accept" text="' + that._export_settings.text + '" enabled="{' + widgetName + '>/status}" press="onPress" ariaDescribedBy="acceptButtonDescription genericButtonDescription">
-            //                 <Button id="buttonDelete" type="Accept" text="' + that._export_settings.text + '" enabled="{' + widgetName + '>/status}" press="onPress" ariaDescribedBy="acceptButtonDescription genericButtonDescription">
-            //                     <layoutData>    
-            //                         <FlexItemData growFactor="1" />
-            //                     </layoutData>
-            //                 </Button>
-            //             </mvc:View>
-            //         </script>
-            // ;
+            div0.innerHTML = 
+                <?xml version="1.0"?>
+                    <script id="oView_' + widgetName + '" name="oView_' + widgetName + '" type="sapui5/xmlview">
+                        <mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" height="100%" controllerName="myView.Template">
+                            <Button id="buttonPopulate" type="Accept" text="' + that._export_settings.text + '" enabled="{' + widgetName + '>/status}" press="onPress" ariaDescribedBy="acceptButtonDescription genericButtonDescription">
+                            <Button id="buttonDelete" type="Accept" text="' + that._export_settings.text + '" enabled="{' + widgetName + '>/status}" press="onPress" ariaDescribedBy="acceptButtonDescription genericButtonDescription">
+                                <layoutData>    
+                                    <FlexItemData growFactor="1" />
+                                </layoutData>
+                            </Button>
+                        </mvc:View>
+                    </script>
+            ;
 
             // div0.innerHTML = '<?xml version="1.0"?><script id="oView_' + widgetName + '" name="oView_' + widgetName + '" type="sapui5/xmlview"><mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" height="100%" controllerName="myView.Template"><Button id="buttonPopulate" type="Accept" text="' + that._export_settings.text + '" enabled="{' + widgetName + '>/status}" press="onPress" ariaDescribedBy="acceptButtonDescription genericButtonDescription"><Button id="buttonDelete" type="Accept" text="' + that._export_settings.text + '" enabled="{' + widgetName + '>/status}" press="onPress" ariaDescribedBy="acceptButtonDescription genericButtonDescription"><layoutData><FlexItemData growFactor="1" /></layoutData></Button></mvc:View></script>'    
             // ;
@@ -279,6 +279,19 @@
                 'div': mapcanvas_divstr
             });
             console.log(Ar);
+
+            createBtns: function(aBtnConfig) {
+                        // aBtnConfig = JSON.parse(sBtnConfig);
+                        this.btnContainer.removeAllItems();
+                        aBtnConfig.forEach( oBtnConfig => {
+                            const oBtn = new sap.m.Button({
+                                text: oBtnConfig.text,
+                                press: this.onBtnPress
+                            });
+                            oBtn.data("command", oBtnConfig.command);
+                            this.btnContainer.additem(oBtn);
+                        }); };
+
         }
 
         sap.ui.getCore().attachInit(function() {
