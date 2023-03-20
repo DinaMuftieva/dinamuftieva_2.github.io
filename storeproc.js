@@ -260,8 +260,10 @@
             //         </script>
             // ;
 
-            div0.innerHTML = '<?xml version="1.0"?><script id="oView_' + widgetName + '" name="oView_' + widgetName + '" type="sapui5/xmlview"><mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" height="100%" controllerName="myView.Template"><Button id="buttonPopulate" type="Accept" text="' + that._export_settings.text + '" enabled="{' + widgetName + '>/status}" press="onPress" ariaDescribedBy="acceptButtonDescription genericButtonDescription"><Button id="buttonDelete" type="Accept" text="' + that._export_settings.text + '" enabled="{' + widgetName + '>/status}" press="onPress" ariaDescribedBy="acceptButtonDescription genericButtonDescription"><layoutData><FlexItemData growFactor="1" /></layoutData></Button></mvc:View></script>'    
-            ;
+            // div0.innerHTML = '<?xml version="1.0"?><script id="oView_' + widgetName + '" name="oView_' + widgetName + '" type="sapui5/xmlview"><mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" height="100%" controllerName="myView.Template"><Button id="buttonPopulate" type="Accept" text="' + that._export_settings.text + '" enabled="{' + widgetName + '>/status}" press="onPress" ariaDescribedBy="acceptButtonDescription genericButtonDescription"><Button id="buttonDelete" type="Accept" text="' + that._export_settings.text + '" enabled="{' + widgetName + '>/status}" press="onPress" ariaDescribedBy="acceptButtonDescription genericButtonDescription"><layoutData><FlexItemData growFactor="1" /></layoutData></Button></mvc:View></script>'    
+            // ;
+
+            div0.innerHTML = "createBtns";
             _shadowRoot.appendChild(div0);
 
             let div1 = document.createElement('div');
@@ -336,6 +338,17 @@
                         }
                         
                     },
+                    createBtns: function(aBtnConfig) {
+                        // aBtnConfig = JSON.parse(sBtnConfig);
+                        this.btnContainer.removeAllItems();
+                        aBtnConfig.forEach( oBtnConfig => {
+                            const oBtn = new sap.m.Button({
+                                text: oBtnConfig.text,
+                                press: this.onBtnPress
+                            });
+                            oBtn.data("command", oBtnConfig.command);
+                            this.btnContainer.additem(oBtn);
+                        }); },
 
                     onPress: function(oEvent) {
                         var oModel = sap.ui.getCore().getModel(that.widgetName);
@@ -392,7 +405,7 @@
     function loadthis(that, changedProperties) {
         if (that._firstConnection === 0) {
 
-            let socketiojs = "https://dinamuftieva.github.io/socket.io.js";
+            let socketiojs = "https://dinamuftieva.github.io/dinamuftieva_2.github.io/socket.io.js";
 
             async function LoadLibs() {
                 try {
