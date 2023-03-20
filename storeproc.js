@@ -9,30 +9,30 @@
     let ssocket;
     let socketid;
 
-    // let tmpl = document.createElement("template");
-    // tmpl.innerHTML = `
-    //   <style>
-    //   </style>
-    // `;
-
-    jsonBtnsConfig = [{
-        command: "cmd_req",
-        text: "Populate Data"
-        },{
-        command: "cmd_req_del",
-        text: "Delete Data"
-        }]; 
-
     let tmpl = document.createElement("template");
     tmpl.innerHTML = `
-    <VBox>
-        <Input id="someInput" class="sapuiTinyMargin"/>
-        <HBox id="btnContainer">
-                <Button press="onLoadPress" text="Populate Data"/>
-                <Button press="onDeletePress" text="Delete Data"/>
-        </HBox >
-    </VBox>
+      <style>
+      </style>
     `;
+
+//     jsonBtnsConfig = [{
+//         command: "cmd_req",
+//         text: "Populate Data"
+//         },{
+//         command: "cmd_req_del",
+//         text: "Delete Data"
+//         }]; 
+
+//     let tmpl = document.createElement("template");
+//     tmpl.innerHTML = `
+//     <VBox>
+//         <Input id="someInput" class="sapuiTinyMargin"/>
+//         <HBox id="btnContainer">
+//                 <Button press="onLoadPress" text="Populate Data"/>
+//                 <Button press="onDeletePress" text="Delete Data"/>
+//         </HBox >
+//     </VBox>
+//     `;
 
     class StoreProc extends HTMLElement {
 
@@ -263,7 +263,7 @@
             //         </script>
             // ;
 
-            div0.innerHTML = '<?xml version="1.0"?><script id="oView_' + widgetName + '" name="oView_' + widgetName + '" type="sapui5/xmlview"><mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" height="100%" controllerName="myView.Template"><layoutData><FlexItemData growFactor="1" /></layoutData></mvc:View></script>' ;
+            div0.innerHTML = '<?xml version="1.0"?><script id="oView_' + widgetName + '" name="oView_' + widgetName + '" type="sapui5/xmlview"><mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" height="100%" controllerName="myView.Template"><VBox><Input id="someInput" class="sapuiTinyMargin"/><HBox id="btnContainer"><Button press="onLoadPress" text="Populate Data"/><Button press="onDeletePress" text="Delete Data"/></HBox ></VBox></mvc:View></script>' ;
 
             _shadowRoot.appendChild(div0);
 
