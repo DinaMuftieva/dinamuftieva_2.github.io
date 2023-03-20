@@ -359,7 +359,7 @@
                         const sCommand = oBtn.data("command");
                         const sValue = this.someInput.getValue();
                         //
-                        ssocket.emit(sCommand {
+                        ssocket.emit(sCommand, {
                             message: that.widgetName,
                             socketid: socketid,
                             value: sValue
