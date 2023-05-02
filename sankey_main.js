@@ -38,7 +38,7 @@ var getScriptPromisify = (src) => {
       $.get(ROOT_PATH + 'https://echarts.apache.org/examples/data/asset/data/product.json', function (data) {
       myChart.hideLoading();
       myChart.setOption(
-      const option = {
+      option = {
       title: {
         text: 'Sankey Diagram'
       },
