@@ -35,10 +35,10 @@ var getScriptPromisify = (src) => {
 
       const chart = echarts.init(this._root)
       myChart.showLoading();
-$.get(ROOT_PATH + 'https://echarts.apache.org/examples/data/asset/data/product.json', function (data) {
-  myChart.hideLoading();
-  myChart.setOption(
-    (const option = {
+      $.get(ROOT_PATH + 'https://echarts.apache.org/examples/data/asset/data/product.json', function (data) {
+      myChart.hideLoading();
+      myChart.setOption(
+      const option = {
       title: {
         text: 'Sankey Diagram'
       },
@@ -101,7 +101,7 @@ $.get(ROOT_PATH + 'https://echarts.apache.org/examples/data/asset/data/product.j
           }
         }
       ]
-    })
+    }
   );
 });
       chart.setOption(option)
